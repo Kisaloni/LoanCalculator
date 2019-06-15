@@ -7,6 +7,7 @@ document.getElementById('loan-form').addEventListener('submit',function(e)
     //show loader
     document.getElementById('loading').style.display='block';
     setTimeout(calculateresult,2000);
+    
     e.preventDefault();
 });
 
@@ -15,10 +16,12 @@ function calculateresult(e)
 {
     
     console.log('Calculating...');
+    
     //UI vars
     const amount=document.getElementById('amount');
     const interest=document.getElementById('interest');
     const years=document.getElementById('years');
+    
     const monthlyPayment=document.getElementById('monthly-payment');
     const totalPayment=document.getElementById('total-payment');
     const totalInterest=document.getElementById('total-interest');
@@ -36,7 +39,11 @@ function calculateresult(e)
         monthlyPayment.value=monthly.toFixed(2);
         totalPayment.value=(monthly*calculatedPayment).toFixed(2);
         totalInterest.value=((monthly*calculatedPayment)-principal).toFixed(2);
+        
+        //hiding loader
         document.getElementById('loading').style.display='none';
+        
+        //showing result
         document.getElementById('result').style.display='block';
     }
     else
