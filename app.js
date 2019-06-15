@@ -3,6 +3,7 @@ document.getElementById('loan-form').addEventListener('submit',function(e)
 {
     //hide results
     document.getElementById('result').style.display='none';
+    
     //show loader
     document.getElementById('loading').style.display='block';
     setTimeout(calculateresult,2000);
@@ -40,7 +41,10 @@ function calculateresult(e)
     }
     else
     {
+        //hiding loder
         document.getElementById('loading').style.display='none';
+        
+        //hiding results
         document.getElementById('result').style.display='none';
         console.log('Error');
           showError('Please check your numbers');
@@ -53,18 +57,24 @@ function showError(error)
 {
     //create a div
     const errorDiv=document.createElement('div');
+    
     //get elements
     const card=document.querySelector('.card');
     const heading=document.querySelector('.heading');
+    
     //Add class
     errorDiv.className='alert alert-danger';
+    
     //Create text node and append to div
     errorDiv.appendChild(document.createTextNode(error));
+    
     //Insert error above
     card.insertBefore(errorDiv,heading);
+    
     //clear error after 3 seconds
     setTimeout(clearError,3000);
 }
+
 function clearError()
 {
     document.querySelector('.alert').remove();
